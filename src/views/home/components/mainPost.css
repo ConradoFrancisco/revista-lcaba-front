@@ -1,0 +1,29 @@
+.image-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los elementos dentro del contenedor */
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  position: relative;
+  width: 850px; /* Ajusta el ancho según tus necesidades */
+  height: 580px; /* Ajusta la altura según tus necesidades */
+}
+
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  display: flex;
+  align-items: end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo con opacidad */
+  /* Otros estilos de overlay, como texto o estilos visuales */
+}
+.overlay p{
+  margin: 0 !important;
+}
