@@ -49,11 +49,6 @@ export default function MainHeader() {
           <div className="col-12 col-sm-6 col-md-4 order-md-3 mb-4 mb-md-0">
             <ul className="nav align-items-center justify-content-center justify-content-sm-end">
               <li className="nav-item">
-                <a className="nav-link text-uppercase fw-medium" href="#">
-                  Ingresar
-                </a>
-              </li>
-              <li className="nav-item">
                 <div className="date-today text-uppercase badge bg-dark rounded-pill py-2 px-3 fw-medium">
                   {fechaFormateada}
                 </div>

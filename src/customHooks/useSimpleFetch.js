@@ -11,6 +11,7 @@ export default function useSimpleFetch({ service }) {
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
       const result = await service();
+      console.log(result)
       setData(result.rows);
     } catch (e) {
       setError(e.message);

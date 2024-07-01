@@ -3,14 +3,14 @@ import { Spinner } from 'react-bootstrap';
 import useSimpleFetch from '../../../customHooks/useSimpleFetch';
 import PostService from '../../../../services/PostService';
 
-export default function HomePosts({ }) {
+export default function HomePosts({}) {
   const { data, loading, error } = useSimpleFetch({
     service: PostService.getAll,
   });
 
-  console.log(data)
+  console.log(data);
   //console.log(process.env)
-  
+
   return (
     <section id="content">
       <div className="content-wrap bg-light py-4">
@@ -111,7 +111,10 @@ export default function HomePosts({ }) {
                                   <div class="entry">
                                     <div class="entry-image">
                                       <a href="demo-news-single.html">
-                                      <img src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`} alt="" />
+                                        <img
+                                          src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`}
+                                          alt=""
+                                        />
                                       </a>
                                       <div class="entry-categories">
                                         <a
