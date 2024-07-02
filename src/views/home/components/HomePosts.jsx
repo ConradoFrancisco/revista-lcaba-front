@@ -9,7 +9,6 @@ export default function HomePosts({}) {
   });
 
   console.log(data);
-  //console.log(process.env)
 
   return (
     <section id="content">

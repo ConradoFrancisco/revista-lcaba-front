@@ -9,10 +9,9 @@
   }
   
   .carousel-nav-button {
-    background-color: #333;
+
     color: #fff;
     border: none;
-    padding: 10px;
     margin: 0 5px; /* Espacio entre los botones */
     border-radius: 5px;
     cursor: pointer;
@@ -21,13 +20,9 @@
   }
   
   .carousel-nav-button.active {
-    background-color: #555; /* Color para el botón activo */
-    transform: scale(1.1); /* Agranda el botón activo */
+    background-color: #333333; /* Color para el botón activo */
   }
   
-  .carousel-nav-button:hover {
-    background-color: #555;
-  }
   
   .image-container {
     position: relative;
