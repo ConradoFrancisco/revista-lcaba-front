@@ -82,7 +82,6 @@ export default function Nav() {
           <nav class="primary-menu with-arrows">
             <ul class="menu-container" style={{ display: 'flex', gap: '20px' }}>
               {menu?.map((item) => {
-                console.log(item);
                 return (
                   <li key={item.id}>
                     <a className="menu-link" href={item.url}>

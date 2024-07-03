@@ -4,11 +4,17 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import PostService from '../../../../services/PostService';
 import useSimpleFetch from '../../../customHooks/useSimpleFetch';
 import './slide.css';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
+import CarruselSkeleton from '../../../skeletons/Carrusel/CarruselSkeleton';
 
 export default function MainPost() {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
-  const { data } = useSimpleFetch({ service: PostService.getAll });
+  const { data, loading, error } = useSimpleFetch({
+    service: PostService.getAll,
+    limit: 6,
+    offset: 2,
+  });
 
   const handleButtonClick = (index) => {
     setActiveIndex(index);
@@ -18,12 +24,7 @@ export default function MainPost() {
     }
   };
 
-  const handleSlideChange = (event) => {
-    const newIndex = event.item;
-    setActiveIndex(newIndex + 1); // Ajustar el índice para reflejar el slide actual
-  };
-
-  const items = data.map((post, index) => (
+  const items = data?.map((post, index) => (
     <div
       key={index}
       className={`image-container ${activeIndex === index ? 'active-slide' : ''}`}
@@ -70,29 +71,36 @@ export default function MainPost() {
 
   return (
     <>
-      <AliceCarousel
-        ref={carouselRef}
-        activeIndex={activeIndex}
-        autoPlay
-        autoPlayInterval={8000}
-        infinite
-        items={items}
-        responsive={{
-          0: { items: 1 },
-          768: { items: 2 },
-          1024: { items: 3 },
-        }}
-        slidesToScroll={1}
-        mouseTracking
-        dotsDisabled={true}
-        onSlideChange={handleSlideChange}
-        renderPrevButton={() => (
-          <button className="carousel-button carousel-prev">Prev</button>
-        )}
-        renderNextButton={() => (
-          <button className="carousel-button carousel-next">Next</button>
-        )}
-      />
+      {loading ? (
+        <CarruselSkeleton />
+      ) : (
+        <AliceCarousel
+          ref={carouselRef}
+          activeIndex={activeIndex}
+          autoPlay
+          autoPlayInterval={8000}
+          infinite
+          items={items}
+          responsive={{
+            0: { items: 1 },
+            768: { items: 2 },
+            1024: { items: 3 },
+          }}
+          slidesToScroll={1}
+          mouseTracking
+          dotsDisabled={true}
+          renderPrevButton={() => (
+            <button className="carousel-button carousel-prev">
+              <FaArrowAltCircleLeft />
+            </button>
+          )}
+          renderNextButton={() => (
+            <button className="carousel-button carousel-next">
+              <FaArrowAltCircleRight />
+            </button>
+          )}
+        />
+      )}
       <div style={{ backgroundColor: '#555' }} className="carousel-buttons">
         <div className="row">
           {data?.map((post, index) => (

@@ -18,7 +18,7 @@ export default function Router() {
         <Route element={<MainLayout/>}>
             <Route path='/' element={<Home />}/>
             <Route path='/autoridades' element={<Autoridades />}/>
-            <Route path='/agenda' element={<Agenda />}/>
+            <Route path='/seccion/agenda.html' element={<Agenda />}/>
             <Route path='/beneficios' element={<Beneficios />}/>
             <Route path='/bienestar' element={<Bienestar/>}/>
             <Route path='/contacto' element={<Contacto/>}/>

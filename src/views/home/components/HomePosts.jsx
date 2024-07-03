@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import useSimpleFetch from '../../../customHooks/useSimpleFetch';
 import PostService from '../../../../services/PostService';
+import LatestPosts from '../../../skeletons/latestPosts/LatestPostsSkeleton';
+import LatestPostsSkeleton from '../../../skeletons/latestPosts/LatestPostsSkeleton';
 
-export default function HomePosts({}) {
+export default function  HomePosts({}) {
   const { data, loading, error } = useSimpleFetch({
     service: PostService.getAll,
   });
 
-  console.log(data);
 
   return (
     <section id="content">
@@ -98,7 +99,7 @@ export default function HomePosts({}) {
               <div className="tab-content">
                 <div className="tab-pane fade active show">
                   <div className="row col-mb-30 mb-0">
-                    {data &&
+                    {loading? <LatestPostsSkeleton /> : data &&
                       (data.length > 0
                         ? data.map((post, key) => {
                             if (key === 0) {
@@ -157,6 +158,7 @@ export default function HomePosts({}) {
                             );
                           })
                         : '')}
+                    
                   </div>
                 </div>
               </div>
