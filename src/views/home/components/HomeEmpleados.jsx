@@ -1,6 +1,14 @@
 import ReactElasticCarousel from 'react-elastic-carousel';
+import useSimpleFetch from '../../../customHooks/useSimpleFetch';
+import PostService from '../../../../services/PostService';
 
 export default function HomeEmpleados() {
+  const { data, loading, error } = useSimpleFetch({
+    service: PostService.getAll,
+    limit: 8,
+    offset: 80,
+  });
+
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2 },
@@ -17,30 +25,11 @@ export default function HomeEmpleados() {
           showEmptySlots={false}
           enableAutoPlay
         >
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
+          {data && data.map((post)=>(
+            <div>
+            <img className='image-fluid' src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`} alt="" />
           </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
-          <div>
-            <img src="https://placehold.co/416x277" alt="" />
-          </div>
+          ))}
         </ReactElasticCarousel>
       </section>
     </>

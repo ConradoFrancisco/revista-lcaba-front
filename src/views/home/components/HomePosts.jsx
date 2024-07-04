@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import useSimpleFetch from '../../../customHooks/useSimpleFetch';
 import PostService from '../../../../services/PostService';
-import LatestPosts from '../../../skeletons/latestPosts/LatestPostsSkeleton';
 import LatestPostsSkeleton from '../../../skeletons/latestPosts/LatestPostsSkeleton';
 
 export default function  HomePosts({}) {
   const { data, loading, error } = useSimpleFetch({
     service: PostService.getAll,
+    limit:4,
+    offset:1
   });
-
 
   return (
     <section id="content">

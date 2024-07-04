@@ -12,14 +12,14 @@ export default function MainPost() {
   const carouselRef = useRef(null);
   const { data, loading, error } = useSimpleFetch({
     service: PostService.getAll,
-    limit: 6,
-    offset: 2,
+    limit: 4,
+    offset: 20,
   });
 
   const handleButtonClick = (index) => {
     setActiveIndex(index);
     if (carouselRef.current) {
-      const adjustedIndex = index - 1; // Ajustar el índice para centrar el slide
+      const adjustedIndex = index - 1; 
       carouselRef.current.slideTo(adjustedIndex >= 0 ? adjustedIndex : 0);
     }
   };
