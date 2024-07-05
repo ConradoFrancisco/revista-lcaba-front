@@ -19,17 +19,21 @@ export default function HomeEmpleados() {
     <>
       <section className="pb-4">
         <h2 className="fs-2 text-center pt-4">EMPLEADOS EN ACCION</h2>
-
         <ReactElasticCarousel
           breakPoints={breakPoints}
           showEmptySlots={false}
           enableAutoPlay
         >
-          {data && data.map((post)=>(
-            <div>
-            <img className='image-fluid' src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`} alt="" />
-          </div>
-          ))}
+          {data &&
+            data.map((post) => (
+              <div>
+                <img
+                  className="image-fluid"
+                  src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`}
+                  alt=""
+                />
+              </div>
+            ))}
         </ReactElasticCarousel>
       </section>
     </>

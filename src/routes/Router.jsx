@@ -10,6 +10,7 @@ import HistoriasDeVida from '../views/historias-de-vida/HistoriasDeVida';
 import Logros from '../views/logros/Logros';
 import Parlamentaria from '../views/parlamentaria/Parlamentaria';
 import Capacitaciones from '../views/capacitaciones/Capacitacion';
+import SinglePost from '../views/posts/singlePost';
 
 export default function Router() {
   return (
@@ -26,6 +27,7 @@ export default function Router() {
             <Route path='/historias-de-vida' element={<HistoriasDeVida/>}/>
             <Route path='/logros' element={<Logros/>}/>
             <Route path='/parlamentaria' element={<Parlamentaria/>}/>
+            <Route path='/posts/:id' element={<SinglePost/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

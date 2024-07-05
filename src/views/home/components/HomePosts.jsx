@@ -106,11 +106,11 @@ export default function  HomePosts({}) {
                               return;
                             }
                             return (
-                              <div class="col-lg-4" key={post.id}>
+                              <div class="col-lg-4" key={post.id_post}>
                                 <div class="posts-md">
                                   <div class="entry">
                                     <div class="entry-image">
-                                      <a href="demo-news-single.html">
+                                      <a href={`/posts/${post.id_post}`}>
                                         <img
                                           src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`}
                                           alt=""
@@ -118,7 +118,7 @@ export default function  HomePosts({}) {
                                       </a>
                                       <div class="entry-categories">
                                         <a
-                                          href="demo-news-category.html"
+                                          href={`/posts/${post.id_post}`}
                                           class="bg-travel"
                                         >
                                           {post.category_title}
@@ -127,7 +127,7 @@ export default function  HomePosts({}) {
                                     </div>
                                     <div class="entry-title text-transform-none">
                                       <h3 class="mb-2">
-                                        <a href={`/posts/${data[0].id}`}>
+                                        <a href={`/posts/${post.id_post}`}>
                                           {post.titulo}
                                         </a>
                                       </h3>
