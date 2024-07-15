@@ -8,7 +8,7 @@ export default function MainHeader() {
       <div class="container">
         <div class="header-row justify-content-between">
           <div id="logo" className="col-4 ms-auto ms-mb-0 me-mb-0 order-md-2">
-            <a href="demo-news.html " style={{display:'flex', justifyContent:'center', alignItems:'center',gap:'.7em'}}>
+            <a href="/" style={{display:'flex', justifyContent:'center', alignItems:'center',gap:'.7em'}}>
               <img
                 className="logo-default mx-0"
 				style={{height:'120px'}}

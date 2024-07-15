@@ -6,13 +6,13 @@ import HomeEmpleados from './components/HomeEmpleados';
 export default function Home() {
   return (
     <>
-      {/* <MainPost /> */}
-      {/* <hr className="m-0" /> */}
+      {<MainPost />}
+      {<hr className="m-0" />}
       <HomePosts />
-      {/* <hr className="m-0" />
+      <hr className="m-0" />
       <HomeEmpleados />
-      <hr className="m-0" /> */}
-      {/* <AgendaHome /> */}
+      <hr className="m-0" />
+      <AgendaHome />
     </>
   );
 }

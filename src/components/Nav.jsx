@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import useSimpleFetch from '../customHooks/useSimpleFetch';
 import MenuService from '../../services/MenuService';
+import { NavDropdown } from 'react-bootstrap';
 
 export default function Nav() {
-  const [menu, SetMenu] = useState([
+  const [menus, SetMenus] = useState([
     { id: 1, titulo: 'Home', colorClass: 'menu-color-home', url: '/' },
     {
       id: 2,
@@ -64,7 +65,8 @@ export default function Nav() {
     const fetchmenu = async () =>{
       try{
         const result = await MenuService.getMenus({pageId:6})
-        SetMenu(result.rows)
+        SetMenus(result.menues)
+        console.log(result.menues)
       }catch(e){
         console.error(e);
       }
@@ -81,15 +83,21 @@ export default function Nav() {
         <div class="header-row justify-content-between flex-row-reverse flex-lg-row">
           <nav class="primary-menu with-arrows">
             <ul class="menu-container" style={{ display: 'flex', gap: '20px' }}>
-              {menu?.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <a className="menu-link" href={item.url}>
-                      <div>{item.title}</div>
-                    </a>
-                  </li>
-                );
-              })}
+              {
+                menus?.map((menu,key)=>{
+                  return (
+                    <NavDropdown title={menu.menu_title}>
+                      {menu.submenus?.map((submenu,key)=>{
+                        return(
+                          <NavDropdown.Item>
+                            {submenu.submenu_title}
+                        </NavDropdown.Item>
+                        )
+                      })}
+                    </NavDropdown>
+                  )
+                })
+              }
             </ul>
           </nav>
         </div>

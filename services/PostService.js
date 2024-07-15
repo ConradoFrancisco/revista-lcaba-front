@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class PostService {
-  async getAll({ offset = 0, limit = 4 }) {
+  async getAll({ offset = 10, limit = 4 }) {
     console.log('entre:',offset)
     try {
       const results = await axios.get('http://localhost:5001/magazine/posts', {

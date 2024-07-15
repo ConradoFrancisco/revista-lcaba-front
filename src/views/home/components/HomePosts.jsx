@@ -8,7 +8,7 @@ export default function  HomePosts({}) {
   const { data, loading, error } = useSimpleFetch({
     service: PostService.getAll,
     limit:4,
-    offset:1
+    offset:15
   });
 
   return (
