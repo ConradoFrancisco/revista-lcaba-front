@@ -16,6 +16,7 @@ export default function () {
   useEffect(() => {
     const fetchPost = async () => {
       const result = await PostService.getById({ id });
+      console.log(result)
       setPost(result.rows[0]);
       setImages(result.images);
       console.log('post:', result.rows[0]);

@@ -28,7 +28,8 @@ export default function HomeEmpleados() {
             data.map((post) => (
               <div>
                 <img
-                  className="image-fluid"
+
+                  className="image-fluid h-100"
                   src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`}
                   alt=""
                 />

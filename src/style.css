@@ -308,7 +308,10 @@ dl {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
+.sc-gEvEer{
+  max-height: 214px;
+  height: 214px;
+}
 ol ol,
 ul ul,
 ol ul,
@@ -30135,6 +30138,7 @@ label.error {
   list-style: none;
   margin: 0;
 }
+
 .widget_nav_menu li, .widget_links li, .widget_meta li, .widget_archive li, .widget_recent_comments li, .widget_recent_entries li, .widget_categories li, .widget_pages li, .widget_rss li {
   display: flex;
   padding: 0.25rem 0;

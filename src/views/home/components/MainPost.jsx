@@ -7,15 +7,9 @@ import './slide.css';
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa';
 import CarruselSkeleton from '../../../skeletons/Carrusel/CarruselSkeleton';
 
-export default function MainPost() {
+export default function MainPost({data,loading}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const carouselRef = useRef(null);
-  const { data, loading, error } = useSimpleFetch({
-    service: PostService.getAll,
-    limit: 4,
-    offset: 20,
-  });
-
   const handleButtonClick = (index) => {
     setActiveIndex(index);
     if (carouselRef.current) {

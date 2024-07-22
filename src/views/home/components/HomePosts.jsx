@@ -4,12 +4,7 @@ import useSimpleFetch from '../../../customHooks/useSimpleFetch';
 import PostService from '../../../../services/PostService';
 import LatestPostsSkeleton from '../../../skeletons/latestPosts/LatestPostsSkeleton';
 
-export default function  HomePosts({}) {
-  const { data, loading, error } = useSimpleFetch({
-    service: PostService.getAll,
-    limit:4,
-    offset:15
-  });
+export default function HomePosts({data,loading}) {
 
   return (
     <section id="content">
@@ -99,12 +94,12 @@ export default function  HomePosts({}) {
               <div className="tab-content">
                 <div className="tab-pane fade active show">
                   <div className="row col-mb-30 mb-0">
-                    {loading? <LatestPostsSkeleton /> : data &&
+                    {loading ? (
+                      <LatestPostsSkeleton />
+                    ) : (
+                      data &&
                       (data.length > 0
-                        ? data.map((post, key) => {
-                            if (key === 0) {
-                              return;
-                            }
+                        ? data?.map((post, key) => {
                             return (
                               <div class="col-lg-4" key={post.id_post}>
                                 <div class="posts-md">
@@ -112,6 +107,13 @@ export default function  HomePosts({}) {
                                     <div class="entry-image">
                                       <a href={`/posts/${post.id_post}`}>
                                         <img
+                                          style={{
+                                            height: '17.5em',
+                                            objectFit: 'cover',
+                                            backgroundColor: '#685bbc',
+                                            paddingBottom: '45px',
+                                            borderRadius:'0 0 50px 0'
+                                          }}
                                           src={`https://www.legislatura.gob.ar/${post.location}/${post.filename}`}
                                           alt=""
                                         />
@@ -157,8 +159,8 @@ export default function  HomePosts({}) {
                               </div>
                             );
                           })
-                        : '')}
-                    
+                        : '')
+                    )}
                   </div>
                 </div>
               </div>

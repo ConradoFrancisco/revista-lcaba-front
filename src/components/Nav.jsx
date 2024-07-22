@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useSimpleFetch from '../customHooks/useSimpleFetch';
 import MenuService from '../../services/MenuService';
 import { NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Nav() {
   const [menus, SetMenus] = useState([
@@ -61,20 +62,58 @@ export default function Nav() {
       url: '/contacto',
     },
   ]);
-  useEffect(()=>{
-    const fetchmenu = async () =>{
-      try{
-        const result = await MenuService.getMenus({pageId:6})
-        SetMenus(result.menues)
-        console.log(result.menues)
-      }catch(e){
+  useEffect(() => {
+    const fetchmenu = async () => {
+      try {
+        const result = await MenuService.getMenus({ pageId: 6 });
+        SetMenus(result.menues);
+        console.log(result.menues);
+      } catch (e) {
         console.error(e);
       }
-    }
+    };
     fetchmenu();
-  },[])
+  }, []);
   return (
-    <div
+    <>
+      <div className="container">
+        <div className="menu-container d-block">
+          <ul className="d-flex gap-4" style={{ listStyle: 'none' }}>
+            <li className="menu-item menu-color-travel">
+              <a
+                href="#"
+                style={{ fontWeight: '500' }}
+                className="menu-link menu-color-home"
+              >
+                HOME
+              </a>
+            </li>
+            {menus?.map((menu, key) => {
+              return (
+                <>
+                  <li className="menu-item menu-color-travel">
+                    <NavDropdown
+                      as="a"
+                      style={{ fontWeight: '500' }}
+                      className="menu-link"
+                      title={menu.menu_title}
+                    >
+                      {menu.submenus?.map((submenu, key) => {
+                        return (
+                          <NavDropdown.Item as="a" href={submenu.submenu_url} className="menu-link">
+                            {submenu.submenu_title}
+                          </NavDropdown.Item>
+                        );
+                      })}
+                    </NavDropdown>
+                  </li>
+                </>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+      {/* <div
       id="header-wrap"
       style={{ position: 'unset' }}
       class="border-top border-f5 mt-2"
@@ -89,7 +128,7 @@ export default function Nav() {
                     <NavDropdown title={menu.menu_title}>
                       {menu.submenus?.map((submenu,key)=>{
                         return(
-                          <NavDropdown.Item>
+                          <NavDropdown.Item as={Link} to={submenu.submenu_url}>
                             {submenu.submenu_title}
                         </NavDropdown.Item>
                         )
@@ -102,6 +141,7 @@ export default function Nav() {
           </nav>
         </div>
       </div>
-    </div>
+    </div> */}
+    </>
   );
 }

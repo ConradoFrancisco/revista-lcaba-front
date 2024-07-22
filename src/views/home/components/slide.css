@@ -64,11 +64,15 @@
   .entry-categories a {
     background-color: #333;
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 15px;
+    border-radius: 0 20px 20px 0;
     text-decoration: none;
   }
-  
+  .entry-categories{
+    left : 0px !important;
+    bottom: 250px !important;
+  }
+
   .title {
     margin: 10px 0;
     font-size: 1.5em;
